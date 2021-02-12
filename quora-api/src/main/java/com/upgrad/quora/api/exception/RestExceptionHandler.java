@@ -12,7 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 public class RestExceptionHandler {
 
     @ExceptionHandler(AnswerNotFoundException.class)
-    public ResponseEntity<ErrorResponse> unauthorizedException(AnswerNotFoundException exe, WebRequest request){
+    public ResponseEntity<ErrorResponse> answerNotFoundException(AnswerNotFoundException exe, WebRequest request){
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.NOT_FOUND);
     }
@@ -24,31 +24,31 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(AuthorizationFailedException.class)
-    public ResponseEntity<ErrorResponse> unauthorizedException(AuthenticationFailedException exe, WebRequest request){
+    public ResponseEntity<ErrorResponse> unauthorizedException(AuthorizationFailedException exe, WebRequest request){
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(InvalidQuestionException.class)
-    public ResponseEntity<ErrorResponse> unauthorizedException(InvalidQuestionException exe, WebRequest request){
+    public ResponseEntity<ErrorResponse> invalidQuestionException(InvalidQuestionException exe, WebRequest request){
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(SignOutRestrictedException.class)
-    public ResponseEntity<ErrorResponse> unauthorizedException(SignOutRestrictedException exe, WebRequest request){
+    public ResponseEntity<ErrorResponse> signOutRestrictedException(SignOutRestrictedException exe, WebRequest request){
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(SignUpRestrictedException.class)
-    public ResponseEntity<ErrorResponse> unauthorizedException(SignUpRestrictedException exe, WebRequest request){
+    public ResponseEntity<ErrorResponse> signUpRestrictedException(SignUpRestrictedException exe, WebRequest request){
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorResponse> resourceNotFoundException(UserNotFoundException exe, WebRequest request){
+    public ResponseEntity<ErrorResponse> userNotFoundException(UserNotFoundException exe, WebRequest request){
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.NOT_FOUND);
     }
