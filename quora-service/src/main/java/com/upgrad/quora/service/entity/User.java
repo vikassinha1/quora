@@ -26,6 +26,7 @@ import javax.validation.constraints.NotNull;
 @NamedQueries(
         {
                 @NamedQuery(name = "userByUuid", query = "select u from User u where u.uuid = :uuid"),
+                @NamedQuery(name = "userByUserName", query = "select u from User u where u.userName = :userName"),
                 @NamedQuery(name = "userByEmail", query = "select u from User u where u.email = :email")
         }
 )

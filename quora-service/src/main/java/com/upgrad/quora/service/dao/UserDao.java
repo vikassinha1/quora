@@ -32,6 +32,15 @@ public class UserDao {
         }
     }
 
+    public User getUserByUserName(String userName) {
+        try {
+            return entityManager.createNamedQuery("userByUserName", User.class).setParameter("userName", userName)
+                    .getSingleResult();
+        } catch(NoResultException n){
+            return null;
+        }
+    }
+
     public User getUserByEmail(final String email) {
         try {
             return entityManager.createNamedQuery("userByEmail", User.class).setParameter("email", email)
