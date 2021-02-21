@@ -35,10 +35,13 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, path = "signin", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SigninResponse> signin(@RequestHeader("authorization") final String authorization) throws AuthenticationFailedException {
-        byte[] decoded = Base64.getDecoder().decode(authorization.split(" ")[1]);
+        byte[] decoded = Base64.getDecoder().decode(authorization);
         String decodedText = new String(decoded);
         String[] decodedArray = decodedText.split(":");
 
+        if(decodedArray.length < 2){
+            throw new AuthenticationFailedException("ATH-001","This username does not exist");
+        }
 
         UserAuth authEntity = userBusinessService.signin(decodedArray[0], decodedArray[1]);
 
