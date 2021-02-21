@@ -42,6 +42,7 @@ public class UserDao {
         }
     }
 
+    @Transactional
     public UserAuth createAuthToken(final UserAuth userAuthTokenEntity){
         entityManager.persist(userAuthTokenEntity);
         return userAuthTokenEntity;
@@ -61,6 +62,7 @@ public class UserDao {
 
     }
 
+    @Transactional
     public String deleteUser(final User user){
         entityManager.remove(user);
         return user.getUuid();
@@ -84,6 +86,7 @@ public class UserDao {
         }
     }
 
+    @Transactional
     public void updateUserLogoutByToken(final String accessToken, final ZonedDateTime logoutAt) {
         entityManager.createNamedQuery("updateLogoutByToken" )
                 .setParameter("token", accessToken)
