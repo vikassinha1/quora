@@ -75,6 +75,15 @@ public class UserDao {
         }
     }
 
+    public Boolean isUsernameExists(final String username) {
+        try {
+            User singleResult = entityManager.createNamedQuery("userByUsername", User.class).setParameter("username", username).getSingleResult();
+            return true;
+        } catch (NoResultException nre) {
+            return false;
+        }
+    }
+
     public void updateUserLogoutByToken(final String accessToken, final ZonedDateTime logoutAt) {
         entityManager.createNamedQuery("updateLogoutByToken" )
                 .setParameter("token", accessToken)
