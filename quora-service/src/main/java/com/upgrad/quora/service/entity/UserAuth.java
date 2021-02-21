@@ -2,6 +2,7 @@ package com.upgrad.quora.service.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
     /*ID BIGSERIAL PRIMARY KEY,
@@ -39,12 +40,10 @@ public class UserAuth {
     private String accessToken;
 
     @Column(name = "EXPIRES_AT")
-    @NotNull
-    private Date expiresAt;
+    private ZonedDateTime expiresAt;
 
     @Column(name = "LOGIN_AT")
-    @NotNull
-    private Date loginAt;
+    private ZonedDateTime loginAt;
 
     @Column(name = "LOGOUT_AT")
     private Date logoutAt;
@@ -81,19 +80,19 @@ public class UserAuth {
         this.accessToken = accessToken;
     }
 
-    public Date getExpiresAt() {
+    public ZonedDateTime getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(Date expiresAt) {
+    public void setExpiresAt(ZonedDateTime expiresAt) {
         this.expiresAt = expiresAt;
     }
 
-    public Date getLoginAt() {
+    public ZonedDateTime getLoginAt() {
         return loginAt;
     }
 
-    public void setLoginAt(Date loginAt) {
+    public void setLoginAt(ZonedDateTime loginAt) {
         this.loginAt = loginAt;
     }
 
