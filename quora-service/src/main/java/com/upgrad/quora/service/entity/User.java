@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "USERS")
 @NamedQueries({
-        @NamedQuery(name = "userByUsername", query = "select u from User u where u.username = :username"),
+        @NamedQuery(name = "userByUsername", query = "select u from User u where u.userName = :username"),
         @NamedQuery(name = "userByUuid", query = "select u from User u where u.uuid = :uuid"),
         @NamedQuery(name = "userByEmail", query = "select u from User u where u.email = :email"),
         @NamedQuery(name = "deleteUserById", query = "delete User u where u.uuid = :uuid")
