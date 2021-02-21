@@ -22,3 +22,4 @@ Below are feature list going to be part of this implementation.
         5.3. deleteAnswer - "/answer/delete/{answerId}"<br>
         5.4. getAllAnswersToQuestion - "answer/all/{questionId}"<br>
 Swagger will be used to test API endpoints and functions. <br>
+adding new commit
