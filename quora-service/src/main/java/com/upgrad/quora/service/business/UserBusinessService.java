@@ -61,7 +61,7 @@ public class UserBusinessService {
     @Transactional
     public User signup(User User) throws SignUpRestrictedException {
 
-        if(userDao.isEmailExists(User.getUserName())) {
+        if(userDao.isUsernameExists(User.getUserName())) {
             throw new SignUpRestrictedException("SGR-001", "Try any other Username, this Username has already been taken");
         }
 
