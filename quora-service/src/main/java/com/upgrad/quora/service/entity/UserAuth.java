@@ -17,7 +17,8 @@ import java.util.Date;
 @Entity
 @Table(name = "USER_AUTH")
 @NamedQueries({
-        @NamedQuery(name = "userAuthTokenByAccessToken" , query = "select ut from UserAuth ut where ut.accessToken = :accessToken ")
+        @NamedQuery(name = "userAuthTokenByAccessToken" , query = "select ut from UserAuth ut where ut.accessToken = :accessToken "),
+        @NamedQuery(name = "updateLogoutByToken", query = "update UserAuth ua set ua.logoutAt = :logoutAt where ua.accessToken = :token")
 })
 public class UserAuth {
 
