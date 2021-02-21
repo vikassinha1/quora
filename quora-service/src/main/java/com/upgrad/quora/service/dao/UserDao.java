@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import java.time.ZonedDateTime;
 
 @Repository
 public class UserDao {
@@ -65,4 +66,27 @@ public class UserDao {
         return user.getUuid();
     }
 
+    public Boolean isEmailExists(final String email) {
+        try {
+            User singleResult = entityManager.createNamedQuery("userByEmail", User.class).setParameter("email", email).getSingleResult();
+            return true;
+        } catch (NoResultException nre) {
+            return false;
+        }
+    }
+
+    public void updateUserLogoutByToken(final String accessToken, final ZonedDateTime logoutAt) {
+        entityManager.createNamedQuery("updateLogoutByToken" )
+                .setParameter("token", accessToken)
+                .setParameter("logoutAt", logoutAt)
+                .executeUpdate();
+    }
+
+    public User getUserByUsername(final String username) {
+        try {
+            return entityManager.createNamedQuery("userByUsername", User.class).setParameter("username", username).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 }
